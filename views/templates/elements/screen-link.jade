@@ -1,0 +1,5 @@
+script#screen-link-element-template(type='text/template', data-tag='li')
+  if sharing
+    a(href!='/share/#{userId}/project/#{projectId}/screen/<%- screen %>') <%- text %>
+  else
+    a(href!='/prototype/project/#{projectId}/screen/<%- screen %>') <%- text %>

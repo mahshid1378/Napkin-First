@@ -1,0 +1,14 @@
+script#heading-element-template(type='text/template')
+  <% if (level === 1) { %>
+  h1 <%- text %>
+  <% } else if (level === 2) { %>
+  h2 <%- text %>
+  <% } else if (level === 3) { %>
+  h3 <%- text %>
+  <% } else if (level === 4) { %>
+  h4 <%- text %>
+  <% } else if (level === 5) { %>
+  h5 <%- text %>
+  <% } else if (level === 6) { %>
+  h6 <%- text %>
+  <% } %>

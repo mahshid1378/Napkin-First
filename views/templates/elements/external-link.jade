@@ -1,0 +1,5 @@
+script#external-link-element-template(type='text/template', data-tag='li')
+  if sharing
+    a(href!='<%- url %>') <%- text %>
+  else
+    a(href='#') <%- text %>

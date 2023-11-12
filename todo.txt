@@ -1,0 +1,83 @@
+======================
+| Key:               |
+| - Open task        |
+| ~ Task in progress |
+| / Task completed   |
+| * Continuous task  |
+======================
+
+- Optimize requests
+- Add link on sharing page for visibility
+- Sign in button styles on FF
+- Moving nav elements around sometimes causes circular linked list
+  - Not sure why this only happens with nav and not with other elements
+  - Only happens sometimes
+
+* Make sure routes contain delete req.session.sharedId if they are not for shared pages
+* For all forms on the page, make sure their field ids are by default in the usedIds hash
+
+/ Fix export
+/ Responsiveness for popovers
+
+Backbone Refactor
+/ Keyboard shorcuts
+/ Changes when layout additions kick in (public/javascripts/views/element.js)
+/ Comment out navigation form configuration
+/ Templates from text/ejs -> text/template
+/ undelegateEvents to remove view? what about contextualEvents and routeEvents?
+/ Assess wait: true
+
+-----------------------
+
+/ Change layout object to just row and col
+/ Sort projects by ID on client side
+/ Add callback to function documentation comments
+/ Validate action is an actual screen ID
+/ Keyboard shortcuts
+/ Sort screens by ID on client side
+
+CanJS migration
+/ Better way to merge URL data with screen (note: bad fn name getURLData)
+/ Focus component when added
+/ Add element to empty component
+/ isolatedKeyUp event
+/ tabindex for sidebar
+/ JS on not found page
+/ Get rid of third param in can.extend
+/ Optimize screen page requests upon screen deletion
+/ Optimize requests
+/ Check script tags
+/ Make destroy take params option
+/ Back button
+/ Look over dependencies
+/ Listen to change events on model.List?
+/ Share login script
+/ Sharing
+/ Component config submit
+
+---------------------
+
+/ Restructure files in new folders before commit
+/ Make form names unique
+/ Stop inputs from focusing on element click
+/ ALLOWED_FIELDS should deal with sub-objects
+/ Add validators on the client-side that correspond to the server-side
+/ Update client-side validators for project and screen
+/ Add button to navigate back to project page from screen prototype
+/ Authentication component -> switch to element in article
+/ Add tabindex -1 to links in sidebar
+/ Add form action
+/ Link Napkin logo to home page
+/ Create element function (prototype.js:~120)
+/ Permissions for share page
+/ Permissions for editing project + screen
+/ Ensure project and screen exist to prototype screen page
+/ Add validation for projectId and screenId paramters in route
+/ 404 page for invalid projectId/screenId/etc.
+/ Fix submit links
+/ Delete component while it is active
+/ Implement auth for screen sharing page
+/ Rename login to log-in and logout to log-out
+/ Screens should disappear when active project is deleted
+/ Add link on sharing page for return to prototype
+/ Add screen flag for must be authenticated

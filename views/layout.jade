@@ -1,0 +1,48 @@
+!!! 5
+html
+  head
+    title Napkin - The Rapid Web Prototyping Tool
+    meta(content='width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0', name='viewport')
+
+    meta(content='yes', name='apple-mobile-web-app-capable')
+    meta(content='chrome=1', http-equiv='X-UA-Compatible')
+
+    // TODO: add favicon later - link(rel='shortcut icon', href='/images/favicon.png')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-stripped.min.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400')
+
+    block styles
+
+  body(id='#{pageId}')
+    #main.clearfix
+      #sidebar.clearfix
+        header
+          h1
+            a(href='/', tabindex='-1') Napkin
+
+          if typeof(sharing) === 'undefined' || !sharing
+            if session.email
+              a.persona-button.log-out(href='#', tabindex='-1')
+                span Sign out
+            else
+              a.persona-button.login(href='#log-in', tabindex='-1')
+                span Sign in
+
+        block github
+          iframe#fork(src='http://ghbtns.com/github-btn.html?user=mozilla&repo=napkin&type=fork&count=true',
+            allowtransparency='true', frameborder='0', scrolling='0', width='82px', height='20px')
+
+          iframe#star(src='http://ghbtns.com/github-btn.html?user=mozilla&repo=napkin&type=watch&count=true',
+            allowtransparency='true', frameborder='0', scrolling='0', width='82px', height='20px')
+
+        block sidebar
+      #content
+        block content
+
+    script(type='text/javascript')
+      var currentUser = null;
+      var redirectUrl = '/';
+    if session.email
+      != '<script type="text/javascript">currentUser = "' + session.email + '";</script>'
+    block scripts

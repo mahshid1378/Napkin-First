@@ -1,0 +1,73 @@
+extend layout
+
+block styles
+  link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+
+block sidebar
+  if sharing
+    if projectAuthor === session.id
+      a.btn.btn-danger#back(href='/prototype/project/#{projectId}/screen/#{screenId}', tabindex='-1') &larr; Back to prototype
+    else
+      a.btn.btn-danger#back(href='/', tabindex='-1') &larr; Back to home
+    p This is Napkin, a rapid web prototyping tool. You're currently being shared a screen on the right, which is a mockup of one page of a potential website.
+  else
+    a.btn.btn-danger#back(href='/#!project/#{projectId}', tabindex='-1') &larr; Back to 
+      span project page
+
+  #screen-actions
+
+block content
+  if sharing && !authenticated
+    h2 Authentication Required
+    p You may not view this page unless you are authenticated.
+
+    form.login-form(method='post',
+      action!="/share/#{userId}/project/#{projectId}/screen/#{screenId}/log-in")
+      a.persona-button.share-element.auth(href='#log-in')
+        span Sign in
+      input(type='hidden', name='bid_assertion', value='1')
+
+block scripts
+  if sharing && !authenticated
+    script(src='/javascripts/lib/require-jquery.min.js', data-main='/javascripts/scripts/share.js')
+  else
+    script(src='/javascripts/lib/require-jquery.min.js', data-main='/javascripts/scripts/prototype.js')
+
+  // layouts and lists
+  != partial('templates/layouts/layout')
+  != partial('templates/lists/component')
+  != partial('templates/lists/article-element')
+  != partial('templates/lists/form-element')
+  != partial('templates/lists/navigation-element')
+
+  // article elements and popovers
+  != partial('templates/elements/heading')
+  != partial('templates/elements/paragraph')
+  != partial('templates/elements/auth')
+
+  if !sharing
+    != partial('templates/popovers/heading')
+    != partial('templates/popovers/paragraph')
+    != partial('templates/popovers/auth')
+
+  // form elements and popovers
+  != partial('templates/elements/input-text')
+  != partial('templates/elements/input-radio')
+  != partial('templates/elements/input-checkbox')
+  != partial('templates/elements/textarea')
+
+  if !sharing
+    != partial('templates/popovers/input-text')
+    != partial('templates/popovers/input-radio')
+    != partial('templates/popovers/input-checkbox')
+    != partial('templates/popovers/textarea')
+
+  // navigation elements and popovers
+  != partial('templates/elements/screen-link')
+  != partial('templates/elements/external-link')
+
+  if !sharing
+    != partial('templates/popovers/screen-link')
+    != partial('templates/popovers/external-link')
+
+block github

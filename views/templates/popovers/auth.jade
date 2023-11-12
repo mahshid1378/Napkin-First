@@ -1,0 +1,7 @@
+script#auth-popover-template(type='text/template')
+  form
+    .field
+      label(for='redirect') On login, redirect to screen:
+      != partial('templates/helpers/screen-selection', { selected: 'redirect', name: 'redirect' })
+
+    != partial('templates/popovers/footer')

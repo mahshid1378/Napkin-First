@@ -1,0 +1,72 @@
+script#component-list-template(type='text/template')
+  h2 Components
+  .component.article(data-type='article')
+    h3 Article
+    p Lorem ipsum dolor sit amet consectetur malesuada.
+
+  .component.form(data-type='form')
+    h3 Form
+    input(type='text', name='text-box', disabled='disabled')
+
+  .component.navigation.last(data-type='navigation')
+    h3 Navigation
+    ul.nav.nav-pills
+      li.active
+        a(href='#') Home
+
+  h2 Screen Configuration
+  form#screen-config.clearfix
+    .field
+      label(for='secure') Require user authentication to view?
+      <% if (secure) { %>
+      input#secure(type='checkbox', name='secure', value='true', checked='true')
+      <% } else { %>
+      input#secure(type='checkbox', name='secure', value='true')
+      <% } %>
+
+    button.btn.btn-danger(type='submit') Save
+    i.icon-white.icon-ok
+
+  h2 Screen Layout
+
+script#component-action-template(type='text/template')
+  .component-actions
+    if !sharing
+      a.delete-component(href='#delete', tabindex='-1')
+        i.icon-trash
+
+script#screen-layout-template(type='text/template')
+  <% _.each(layout, function(cols, row) { %>
+  .layout-row.row.dropdown(data-row!='<%- row %>')
+    a.delete-row(href='#delete-row')
+      i.icon-trash.icon-white
+
+    <% _.each(cols, function(length) { %>
+    div(class!='layout-span<%- length %>')
+    <% }); %>
+
+    a.dropdown-toggle(data-toggle='dropdown', href='#modify-row')
+      i.icon-pencil.icon-white
+
+    ul.dropdown-menu
+      li
+        a.layout-row.row
+          span.layout-span4(data-length='4')
+          span.layout-span4(data-length='4')
+          span.layout-span4(data-length='4')
+      li
+        a.layout-row.row
+          span.layout-span4(data-length='4')
+          span.layout-span8(data-length='8')
+      li
+        a.layout-row.row
+          span.layout-span8(data-length='8')
+          span.layout-span4(data-length='4')
+      li
+        a.layout-row.row
+          span.layout-span12(data-length='12')
+  <% }); %>
+
+  .layout-actions
+    span Add Row
+    a.btn.btn-success(href='#add-row') +

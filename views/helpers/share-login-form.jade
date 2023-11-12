@@ -1,0 +1,7 @@
+<% if (typeof redirect === 'undefined') { %>
+<% redirect = ''; %>
+<% } %>
+
+a.persona-button.share-element.auth.login(href='#log-in',
+  data-redirect!="/share/#{userId}/project/#{projectId}/screen/<%- redirect %>")
+  span Sign in

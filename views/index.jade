@@ -1,0 +1,20 @@
+extend layout
+
+block styles
+  link(rel='stylesheet', href='/stylesheets/bootstrap-responsive-project.min.css')
+
+block sidebar
+  h2 Projects
+  !=partial('forms/add-project')
+
+  ul#projects
+
+block content
+  !=partial('forms/add-screen')
+
+block scripts
+  script(src='/javascripts/lib/require-jquery.min.js', data-main='/javascripts/scripts/index.js')
+
+  !=partial('templates/collections/project')
+  !=partial('templates/collections/screen')
+  !=partial('templates/popovers/project-deletion')
